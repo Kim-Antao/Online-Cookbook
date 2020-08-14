@@ -1,0 +1,30 @@
+body{
+    height: 100vh;
+}
+.container-dimensions{
+    height:100%;
+    overflow: hidden;
+}
+.container-image-format{
+   background-size: contain;
+}
+/* Media Query to maintain the desired height and width of background image for all screens*/
+@media(max-width:600px){
+    .container-image-format{
+        max-width: 600px;
+    }
+    @media(height:812px){
+        .container-image-format{
+        height: 812px;
+        }
+    }
+    @media(height:823px){
+        .container-image-format{
+        height: 823px;
+        }
+    }
+}
+/***********************************************Navigation*/
+nav div a{
+    color:#424242;
+}

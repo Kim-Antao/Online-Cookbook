@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+	<title>Online Cookbook</title>
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!--Link to the custom css-->
+	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
+</head>
+
+<body>
+    <header class="styling">
+        <!--Materialize navbar-->
+        <nav class="container styling">
+            <div class="nav-wrapper grey-darken-3">
+                <a href="#" class="brand-logo">Logo</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="sass.html">Add</a></li>
+                    <li><a href="badges.html">Search</a></li>
+                    <li><a href="collapsible.html">Buy</a></li>
+                    <li><a href="collapsible.html">Dashboard</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+	<div class="container container-dimensions">
+		<!-- background image
+        <img src="https://d1wcgy4dy6voh7.cloudfront.net/wp-content/uploads/2016/03/redcurry.jpg" class="container-image-format" alt="">
+    -->
+    {% for recipe in recipes %}
+       {{recipe.title}}
+       {{recipe.prep_time}}
+    {%endfor%}
+    </div>
+		<!--Import jQuery before materialize.js-->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/materialize.min.js"></script>
+
+</body>
+
+</html>
