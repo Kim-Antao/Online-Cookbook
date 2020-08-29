@@ -8,7 +8,7 @@
 		<div class="row">
 			<div class="input-field col s12">
 				<label for="title">Title</label>
-                <input  id="title" name="title" type="text" class="validate" minlength="3" maxlength="25" pattern="^[a-zA-z0-9--.]{3,25}$" required>
+                <input  id="title" name="title" type="text" class="validate" minlength="3" maxlength="25" pattern="^[a-zA-z0-9--.\s]{3,25}$" required>
                 </div>       
             </div>
          <!--image source-->
@@ -48,15 +48,15 @@
             <!--group of radio button to display the types-->
             <div class="row">
                 <div class="col s12 m4">
-                    <input name="type" type="radio" id="veg" required value="veg"/>
+                    <input class="with-gap" name="type" type="radio" id="veg" required value="veg"/>
                     <label for="veg">Vegetarian</label>
                 </div>
                 <div class="col s12 m4">
-                    <input name="type" type="radio" id="non_veg" value="non-veg"/>
+                    <input name="type" class="with-gap" type="radio" id="non_veg" value="non-veg"/>
                     <label for="non_veg">Non-Vegetarian</label>
                 </div>
                 <div class=" col s12 m4">
-                    <input name="type" type="radio" id="vegan" value="vegan"/>
+                    <input name="type" class="with-gap" type="radio" id="vegan" value="vegan"/>
                     <label for="vegan">Vegan</label>
                 </div>        
             </div>
