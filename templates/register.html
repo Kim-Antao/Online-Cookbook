@@ -2,7 +2,6 @@
 
 {% block content %}
 
-<div class="container-dimensions">
 <div class="row">
     <div class="col s12 m8 offset-m2">
         <div class="card-panel text-in-front">
@@ -10,7 +9,7 @@
            <div class="row">            
                 <div class="input-field col s12">
                    <i class="material-icons material-icons-color prefix">account_circle</i>
-                    <input id="username" type="text" class="validate" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" title="Use only alphabets and numbers, and it should be 5 to 15 characters long" name="username" required>
+                    <input id="username" type="text" class="validate" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" title="Username should be 5 to 15 characters long and can only contain alphabets and numbers" name="username" required>
                      <label for="username">Username</label>
                   
               </div>       
@@ -46,5 +45,5 @@
    
 
 </div> -->
-</div>
+
 {% endblock %}
