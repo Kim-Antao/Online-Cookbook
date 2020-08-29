@@ -1,30 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Oswald:wght@300&family=Abril+Fatface&family=EB+Garamond:wght@500&family=PT+Serif&family=Source+Serif+Pro:wght@600&display=swap');
+
+/***********************************************main classes*/
 body{
-    height: 100vh;
+    height: 100vh;  
 }
+
 .container-dimensions{
-    height:100%;
-    overflow: hidden;
+    min-height:100%;
+    background-image: url("https://d1wcgy4dy6voh7.cloudfront.net/wp-content/uploads/2016/03/redcurry.jpg");
+    background-size: cover;
 }
-.container-image-format{
-   background-size: contain;
-}
-/* Media Query to maintain the desired height and width of background image for all screens*/
-@media(max-width:600px){
-    .container-image-format{
-        max-width: 600px;
-    }
-    @media(height:812px){
-        .container-image-format{
-        height: 812px;
-        }
-    }
-    @media(height:823px){
-        .container-image-format{
-        height: 823px;
-        }
-    }
+/*
+.center-align{
+    margin: 0 auto;
+}*/
+
+.margin-zero{
+    margin-bottom: 0;
 }
 /***********************************************Navigation*/
-nav div a{
-    color:#424242;
+
+nav{
+    background-color: #ef6c00;
+  
+}
+nav .brand-logo{
+    font-family: "Dancing Script", sans-serif;
+    padding-left: 1.5rem;
+}
+
+#mobile-demo a{
+     color:#ef6c00;
+}
+/***********************************************Footer*/
+
+.page-footer{
+     background-color: #ef4400f8 ;
+     padding: 0;
+}
+.page-footer .footer-copyright{
+    text-align: center;
+    
+}
+/*new-recipe-page*/
+/*.image-addPage{
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+}*/
+.text-in-front{
+    background-color: rgba(209, 198, 198, 0); /* Fallback color */
+    background-color: rgba(209, 198, 198, 0.8); /* Black w/opacity/see-through */
+    background-color: none;
+    opacity:1;
+    z-index: 2;
+    width: 100%;
+   
+}
+/*
+@media(max-width:600px){
+    .text-in-front{
+        width: 100%;
+    }
+}
+*/
+
+/*
+
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea{
+    border-bottom:2px solid #ef6c00;
+}
+input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]){
+      border-bottom:2px solid #b7410e;
+}
+input.valid:not([type]), input.valid:not([type]):focus, input[type=text].valid:not(.browser-default), input[type=text].valid:not(.browser-default):focus, input[type=password].valid:not(.browser-default), input[type=password].valid:not(.browser-default):focus, input[type=email].valid:not(.browser-default), input[type=email].valid:not(.browser-default):focus, input[type=url].valid:not(.browser-default), input[type=url].valid:not(.browser-default):focus, input[type=time].valid:not(.browser-default), input[type=time].valid:not(.browser-default):focus, input[type=date].valid:not(.browser-default), input[type=date].valid:not(.browser-default):focus, input[type=datetime].valid:not(.browser-default), input[type=datetime].valid:not(.browser-default):focus, input[type=datetime-local].valid:not(.browser-default), input[type=datetime-local].valid:not(.browser-default):focus, input[type=tel].valid:not(.browser-default), input[type=tel].valid:not(.browser-default):focus, input[type=number].valid:not(.browser-default), input[type=number].valid:not(.browser-default):focus, input[type=search].valid:not(.browser-default), input[type=search].valid:not(.browser-default):focus, textarea.materialize-textarea.valid, textarea.materialize-textarea.valid:focus, .select-wrapper.valid>input.select-dropdown{
+    border-bottom:2px solid #b7410e;
+    box-shadow: 0 1px 0 0 #b7410e;
+    -webkit-box-shadow: 0 1px 0 0 #b7410e;
+}
+input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-default):focus:not([readonly])+label, input[type=password]:not(.browser-default):focus:not([readonly])+label, input[type=email]:not(.browser-default):focus:not([readonly])+label, input[type=url]:not(.browser-default):focus:not([readonly])+label, input[type=time]:not(.browser-default):focus:not([readonly])+label, input[type=date]:not(.browser-default):focus:not([readonly])+label, input[type=datetime]:not(.browser-default):focus:not([readonly])+label, input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label, input[type=tel]:not(.browser-default):focus:not([readonly])+label, input[type=number]:not(.browser-default):focus:not([readonly])+label, input[type=search]:not(.browser-default):focus:not([readonly])+label, textarea.materialize-textarea:focus:not([readonly])+label{
+    color:#b7410e;
+}
+*/
+
+::placeholder{
+    color:#ef6c00;
+}
+
+label, .input-field label{
+    color:#ef6c00;
+}
+
+#prep_time.invalid:not(.browser-default){
+    border-bottom: 1px solid #F44336;
+    box-shadow: 0 1px 0 0 #F44336;
+}
+
+input[type=time].valid:not(.browser-default){
+    border-bottom: 1px solid green;
+    box-shadow: 0 1px 0 0 green;
+}
+
+
+
+
+/* customise the materialize radio buttons*/
+
+ 
+ /* stack overflow*/ 
+ .with-gap[type="radio"]:checked+label:after{
+   background-color: #ef6c00;
+   border-color: #ef6c00;
+} 
+
+.with-gap[type="radio"]:checked+label:before{
+  border-color: #ef6c00;
+}
+
+
+/*   index page*/
+
+.heading{
+    font-family:"Source Serif Pro", sans-serif;
+    color: #ef6c00;
+    
+    text-align: center;  
+}
+
+.heading-spacing{
+    padding-top: 10rem;
+}
+
+.button-styling{
+    background-color: #ef6c00;
+    color: #ffffff;
+    font-family:"Source Serif Pro", sans-serif;
+    text-transform: capitalize;
+    font-size: 25px;
+    margin-bottom: 20px;
+    
+}
+.btn:hover, .btn-large:hover, .change-color:hover{
+     background-color: #e65100;
+}
+@media(max-width:600px){
+    .background-small-screen{
+        background-color: rgba(209, 198, 198, 0); /* Fallback color */
+        background-color: rgba(209, 198, 198, 0.8); /* Black w/opacity/see-through */
+        background-color: none;
+        opacity:1;
+        z-index: 2;
+        width: 100%;
+    }
+}
+
+
+/* modal*/
+
+
+.login-button-styling{
+    width: 90%;
+    background-color: #ef6c00;
+    color: #ffffff;
+    text-transform: capitalize;
+}
+/*new recipe*/
+
+label{
+    color:#ef6c00;
+}
+
+.orange-color{
+    color:#ef6c00;
+}
+
+
+.depth-circle{
+    border-radius: 60%;
+}
+
+.dropdown-content li>a, .dropdown-content li>span{
+    color:#ef6c00;
+    text-transform: capitalize;
+}
+
+/*login*/
+
+.material-icons-color{
+    
+    color:#ef6c00;
+}
+
+/*flash message customization*/
+.flashes h4{
+    line-height: 2;
+}
+
+
+/*common classes*/
+.capitalize{
+    text-transform: capitalize;
+}
+
+/*view page*/
+.image-format{
+    /*width:90%;*/
+    max-height: 30rem;
+    background-size: cover;
 }
