@@ -132,6 +132,14 @@
                 }
                 });
             }
+
+            $('#dropdown-container select').on('change', function(){
+                $(this).parent(".select-wrapper").on("change", function(){
+                        if($(this).children("ul").children("li.selected:not(.disabled)").on("click", function(){})){
+                            console.log($(this).children("ul").children("li.selected").children("span").text()); 
+                        }
+                    });
+            })
         });
 
 
