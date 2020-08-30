@@ -5,12 +5,12 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=<device-width>, initial-scale=1.0">
 	<title>Online Cookbook</title>
-	<!--Import Google Icon Font-->
+	<!--Import materialize Icon-->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!--Import materialize.css-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    
-    <link href='https://fonts.googleapis.com/css' rel='stylesheet'>
+    <!--Import Google fonts-->
+    <link href="https://fonts.googleapis.com/css" rel="stylesheet">
     <!--Link to the custom css-->
 	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
 </head>
@@ -32,28 +32,27 @@
                             <li><a href="{{url_for('display_message')}}">New Recipe</a></li>
                         {% endif %}
                         <li><a href="{{url_for('list_cuisines')}}">Search</a></li>
-                        <li><a href="">Buy</a></li>
-                        <li><a href="">Dashboard</a></li>
+                        <li><a href="{{url_for('buy')}}">Buy</a></li>
+                        <li><a href="{{url_for('dashboard')}}">Dashboard</a></li>
                         {% if session.user %}
                             <li><a href="{{url_for('logout')}}">Logout</a></li>
                         {% else %}
                             <li><a href="{{url_for('login')}}">Login/SignUp</a></li>
                         {% endif %}
-                        <!--
-                        {{url_for('profile', username=session['user'])}}
-
-                        -->
-                         </ul>
+                    </ul>
+                    <!--side navbar- responsive-->
                     <ul class="side-nav" id="mobile-demo">
                         <li><a href="{{url_for('index_page')}}">Home</a></li>
+                        <!--check if the user is logged in-->
                         {% if session.user %}
-                            <li><a href="{{url_for('insert_recipe',username=session['user'])}}">New Recipe</a></li>
+                            <li><a href="{{url_for('insert_recipe')}}">New Recipe</a></li>
                         {% else %}
                             <li><a href="{{url_for('display_message')}}">New Recipe</a></li>
                         {% endif %}
                         <li><a href="{{url_for('list_cuisines')}}">Search</a></li>
-                        <li><a href="">Buy</a></li>
-                        <li><a href="">Dashboard</a></li>
+                        <li><a href="{{url_for('buy')}}">Buy</a></li>
+                        <li><a href="{{url_for('dashboard')}}">Dashboard</a></li>
+                        <!--check if the user is logged in-->
                         {% if session.user %}
                             <li><a href="{{url_for('logout')}}">Logout</a></li>
                         {% else %}
@@ -73,19 +72,19 @@
                     {% for message in messages %}
                         <div class="row flashes">
                             <div class="col s12 m8 offset-m2 text-in-front">
-    
-                            <h4 class="center-align heading">{{message}}</h4>
+                                <h4 class="center-align heading">{{message}}</h4>
                             </div>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-    </section>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </section>
    
         {%block content%}
 
         {%endblock%}
     </div>
+    <!--footer with copyright info-->
     <footer class="page-footer">
         <div class="footer-copyright">
             <div class="container">
@@ -96,14 +95,14 @@
 	<!--Import jQuery before materialize.js-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <!--additional script required for functioning of materialize elements-->
     <script type="text/javascript">    
         $(document).ready(function() {
+            //additional script required for functioning of materialize elements
             $('.collapsible').collapsible();
             $(".button-collapse").sideNav();
             $('select').material_select();
             //code below was provided in the code institue module
-           
+            //adding validation classes to materialise select
             validateMaterializeSelect();
             function validateMaterializeSelect(){
                 let classValid = {"border-bottom": "1px solid #4caf50", "box-shadow": "0 1px 0 0 #4caf50"};
@@ -132,7 +131,7 @@
                 }
                 });
             }
-
+            //function to get the value of the dropdown on change 
             $('#dropdown-container select').on('change', function(){
                 $(this).parent(".select-wrapper").on("change", function(){
                         if($(this).children("ul").children("li.selected:not(.disabled)").on("click", function(){})){
@@ -143,30 +142,25 @@
         });
 
 
-//function to add an input field
-    function add_input_field_ingredients(){
-        var new_input= document.createElement("div");
-        new_input.innerHTML = '</br><div class="input-field col s9 m11"><input name="ingredients[]" type="text" class="validate" required></div>';
-        document.getElementById("ingredients-div").appendChild(new_input);
-       // document.getElementById("ingredients-div").appendChild +='</br><div class="input-field col s11"><input name="ingredients[]" type="text"></div>';
-       // fields.innerHTML += "     <div class='ro<div class='input-field col s11'><input name='ingredients' type='text'></div><div class='col s1'><a href=''><i                      class='medium material-icons orange-color'>add_circle</i></a></div></div>"
-    }
-    function add_input_field_instructions(){
-        var new_input1= document.createElement("div");
-        new_input1.innerHTML = '</br><div class="input-field col s9 m11"><input name="instructions[]" type="text" class="validate" required></div>';
-        document.getElementById("instructions-div").appendChild(new_input1);    
-      
-      // document.getElementById("instructions-div").innerHTML +='</br><div class="input-field col s11"><input name="instructions[]" type="text"></div><div class="col s1"><a href="#!" onclick="add_input_field_instructions()"><i class="medium material-icons orange-color change-color waves-effect z-depth-4 depth-circle">add_circle</i></a></div>'
-       // fields.innerHTML += "     <div class='ro<div class='input-field col s11'><input name='ingredients' type='text'></div><div class='col s1'><a href=''><i                      class='medium material-icons orange-color'>add_circle</i></a></div></div>"
-        //counter++;
-    }
-    function add_input_field_tools(){
-        var new_input2= document.createElement("div");
-        new_input2.class="row";
-        new_input2.innerHTML = '<div class="input-field col s3"><input name="tools-name[]" type="text" class="validate" required></div><div class="input-field col s8"><input name="tools-link[]" type="text" class="validate" required></div>';
-        document.getElementById("tools-div").appendChild(new_input2);
-     
-    }
+        //function to add an input field for ingredients field
+        function add_input_field_ingredients(){
+            var new_input= document.createElement("div");
+            new_input.innerHTML = '</br><div class="input-field col s9 m11"><input name="ingredients[]" type="text" class="validate" required></div>';
+            document.getElementById("ingredients-div").appendChild(new_input);
+        }
+        //function to add an input field for instructions field
+        function add_input_field_instructions(){
+            var new_input1= document.createElement("div");
+            new_input1.innerHTML = '</br><div class="input-field col s9 m11"><input name="instructions[]" type="text" class="validate" required></div>';
+            document.getElementById("instructions-div").appendChild(new_input1);    
+        }
+        //function to add an input field for tools field
+        function add_input_field_tools(){
+            var new_input2= document.createElement("div");
+            new_input2.class="row";
+            new_input2.innerHTML = '<div class="input-field col s3"><input name="tools-name[]" type="text" class="validate" required></div><div class="input-field col s8"><input name="tools-link[]" type="text" class="validate" required></div>';
+            document.getElementById("tools-div").appendChild(new_input2);
+        }
     </script>
 </body>
 </html>
