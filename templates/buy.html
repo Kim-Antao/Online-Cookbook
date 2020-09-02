@@ -4,9 +4,9 @@
     <div class="col s12 m8 offset-m2">
         <div class="text-in-front center-align">
         <ul class="collection with-header">
-        <li class="collection-header"><h4>Kitchen Must Haves</h4></li>
+        <li class="collection-header"><h4 class="heading capitalize">Kitchen Must Haves</h4></li>
         {% for tool in tools %}
-        <li class="collection-item"><div>{{tool.name}}<a href="{{tool.link}}" class="secondary-content" target="_blank"><i class="material-icons material-icons-color">send</i></a></div></li>
+        <li class="collection-item"><div class="capitalize tool-name-customization">{{tool.name}}<a href="{{tool.link}}" class="secondary-content" target="_blank"><i class="material-icons material-icons-color">send</i></a></div></li>
         {% endfor %}
         </ul>
         </div>
