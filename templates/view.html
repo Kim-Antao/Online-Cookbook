@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row margin-zero">
+    <div class="col s12 m8 offset-m2">
+        <div class="text-in-front center-align">
+            <!--title-->
+		    <div class="row">
+                <div class="col s12">
+                    <h2 class="heading capitalize">
+                    {{recipe.title}}
+                    </h2>
+                </div>
+			</div>
+            <!--display image-->
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <img src="{{recipe.image_src}}" class="image-format" alt="image for {{recipe.title}}">
+                </div>
+            </div>
+            <!--prep time-->
+            <div class="row margin-zero">
+                <div class=" col s6">
+                   <span class="view-labels orange-color">Prep time:</span><span class="view-labels" > {{recipe.prep_time}}</span>
+                </div>
+                <div class=" col s6">
+                   <span class="view-labels orange-color">Cook time:</span><span class="view-labels" > {{recipe.cook_time}}</span>
+                </div>
+                <div class=" col s6">
+                   <span class="view-labels orange-color">Serves: </span><span class="view-labels" >{{recipe.serving}}</span>
+                </div>
+                <div class=" col s6">
+                   <span class="view-labels orange-color">Calories: </span><span class="view-labels" >{{recipe.calories}} KCal</span>
+                </div>     
+            </div>
+            <!--display the type and cuisine-->
+            <div class="row">
+                <div class="col s6">
+                    <span class="view-labels orange-color">Type:</span><span class="view-labels" > {{recipe.type}}</span>
+                </div>  
+                <div class="col s6">
+                    <span class="view-labels orange-color">Cuisine:</span><span class="view-labels" > {{recipe.cuisine}}</span>
+                </div>      
+            </div>
+            <!--display ingredients-->
+            <div class="row" >
+                <div class="col s12 view-labels orange-color">Ingredients</div>          
+                    <ul>
+                        {% for ingredient in recipe.ingredients %}
+                            <div class="row margin-customization">
+                                <div class="col s1">
+                                    <i class="material-icons orange-color icon-spacing">keyboard_arrow_right</i>
+                                </div>
+                                <div class="col s11">
+                                    <li class="view-lists">{{ingredient}}</li>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </ul>              
+            </div>
+            <!--display instructions-->
+            <div class="row " >
+                <div class="col s12 view-labels orange-color">Ingredients</div>          
+                    <ul>
+                        {% for instruction in recipe.instructions %}
+                            <div class="row margin-customization">
+                                <div class="col s1">
+                                    <i class="material-icons orange-color icon-spacing">keyboard_arrow_right</i>
+                                </div>
+                                <div class="col s11">
+                                    <li class="view-lists">{{instruction}}</li>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </ul>  
+            </div>
+            <!--display tools and their links-->
+            <div class="row" >
+                <div class="col s12 view-labels orange-color">Tool's Name <small> (Click to buy an item)</small></div>          
+                    <ul>
+                       {% for tool in tools %}
+                            <div class="row margin-customization">
+                                <div class="col s1">
+                                    <i class="material-icons orange-color icon-spacing">keyboard_arrow_right</i>
+                                </div>
+                                <div class="col s11">
+                                    <li class="view-lists capitalize"><a href="{{tool.link}}" >{{tool.name}}</a></li>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </ul>  
+            </div>
+            <!--buttons-->
+            <div class="row" >
+                <div class="col s6">
+                    {% if session.user %}    
+                        <a href="{{url_for('edit_recipe',recipe_id=recipe._id)}}" class="btn waves-effect waves-light button-styling small-button-styling blue-color z-depth-4" type="submit" name="action">Edit
+                            <i class="material-icons right ">edit</i>
+                        </a>
+                    {% else %}       
+                        <a href="{{url_for('display_message2')}}" class="btn waves-effect waves-light button-styling small-button-styling blue-color z-depth-4" type="submit" name="action">Edit
+                            <i class="material-icons right ">edit</i>
+                        </a>   
+                    {% endif %}
+                </div>
+                <div class="col s6">
+                    {% if session.user %}
+                        <a href="{{url_for('delete',recipe_id=recipe._id)}}" class="btn waves-effect waves-light button-styling small-button-styling red-color z-depth-4" type="submit" name="action">Delete
+                            <i class="material-icons right ">delete</i>
+                        </a>
+                    {% else %} 
+                        <a href="{{url_for('display_message1')}}" class="btn waves-effect waves-light button-styling small-button-styling red-color z-depth-4" type="submit" name="action">Delete
+                            <i class="material-icons right ">delete</i>
+                        </a>
+                    {% endif %}          
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
