@@ -211,13 +211,7 @@ Steps taken to deploy this project are as follows:
     1. IP = 0.0.0.0
     1. PORT = 5000
  
-In particular, you should provide all details of the differences between the deployed version and 
-the development version, if any, including:
-
-Different values for environment variables (Heroku Config Vars)?
-Different configuration files?
-Separate git branch?
-In addition, if it is not obvious, you should also describe how to run your code locally.
+* All the environment values have been saved in the env.py file
 
 ## Credits
 ___
