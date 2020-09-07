@@ -8,7 +8,7 @@ This website pretty much does all the research for you, all you need to do is de
 Amateur or professional cook, this website not only lets you view other recipes but also allows you to contribute and share you amazing recipes.
 
 ## UX
-____
+
 This website is for anyone that wants to learn to cook, try out new recipes or share their own recipes.
 
 Below are some user stories :
@@ -102,7 +102,7 @@ __During the early stages, a rough__ [wireframe](static/pdf/Cookbook_wireframe.p
 
 
 ## Features
-____
+
 ### Existing Features:
 Navigation: allows the user to choose between what they want to acheive by clicking on the tab (code in: base.html).
 
@@ -132,7 +132,7 @@ login/signup: allows the users to login to an account/create an account to manip
 
 
 ## Technologies Used
-____
+
 **HTML:** Hypertext Markup Language (HTML) was used to create the webpage. 
 
 **CSS:** Cascading Style Sheets (CSS) was used to add customised styling to the webpage.
@@ -158,7 +158,7 @@ There are two ways of embedding a chart in this project the charts have been emb
 **JQuery:** [JQuery](https://jquery.com/) was used to simplify DOM manipulation.
 
 ## Testing
-___
+
 Manual testing was done on all the forms of this project
 
 **New recipe form:**  
@@ -192,7 +192,7 @@ Try to submit the form with an existing username value and verify that a relevan
 Try to submit the form with all inputs valid and verify that the success message appears.  
 
 ## Deployment
-____
+
 This project is used using [Heroku](https://dashboard.heroku.com/apps).  
 Steps taken to deploy this project are as follows:  
 * Create an app in Heroku  
@@ -214,7 +214,7 @@ Steps taken to deploy this project are as follows:
 * All the environment values have been saved in the env.py file
 
 ## Credits
-___
+
 
 ### Content
 The recipes have been copied from:  
@@ -233,7 +233,7 @@ The backdrop image is taken from:
 * [Redcurry](https://d1wcgy4dy6voh7.cloudfront.net/wp-content/uploads/2016/03/redcurry.jpg)
 
 ## Acknowledgements
-___
+
 I received inspiration for this project from:  
 * [The Spruce Eats](https://www.thespruceeats.com/)
 * [Cook With Manali](https://www.cookwithmanali.com/)
