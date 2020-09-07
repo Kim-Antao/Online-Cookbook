@@ -1,45 +1,40 @@
 {% extends 'base.html' %}
-
 {% block content %}
-
-
-
 <div class="row">
     <div class="col s12 m8 offset-m2">
         <div class="card-panel text-in-front">
-        <form action="{{url_for('login')}}" method="POST">
-           <div class="row">            
-                <div class="input-field col s12">
-                   <i class="material-icons material-icons-color prefix">account_circle</i>
-                    <input id="username" type="text" class="validate" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" title="Use only alphabets and numbers, and it should be 5 to 15 characters long" name="username" required>
-                     <label for="username">Username</label>
-                  
-              </div>       
-            </div>        
-
-            <div class="row">            
-                <div class="input-field col s12">
-                    <i class="material-icons material-icons-color  prefix">lock</i>
-                    <input  id="password" name="password" type="password" minlength="5" maxlength="15" class="validate" required>
-                    <label for="password">Password</label>
-                </div>       
-            </div>
-            <div class="row margin-zero ">
-            <div class="col s12 center-align">
-                <button class="btn waves-effect waves-light button-styling z-depth-4" type="submit" name="action">Log In
-                    <i class="material-icons right ">send</i>
-                </button>
-            </div>
-            </div>
-
-        </form>
+            <form action="{{url_for('login')}}" method="POST">
+                <!--Username-->
+                <div class="row">            
+                    <div class="input-field col s12">
+                        <i class="material-icons material-icons-color prefix">account_circle</i>
+                        <input id="username" type="text" class="validate" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" title="Use only alphabets and numbers, and it should be 5 to 15 characters long" name="username" required>
+                        <label for="username">Username</label>      
+                    </div>       
+                </div>        
+                <!--Password-->
+                <div class="row">            
+                    <div class="input-field col s12">
+                        <i class="material-icons material-icons-color  prefix">lock</i>
+                        <input  id="password" name="password" type="password" minlength="5" maxlength="15" class="validate" required>
+                        <label for="password">Password</label>
+                    </div>       
+                </div>
+                <!--Button to submit-->
+                <div class="row margin-zero ">
+                    <div class="col s12 center-align">
+                        <button class="btn waves-effect waves-light button-styling z-depth-4" type="submit" name="action">Log In
+                            <i class="material-icons right ">send</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
             <br>
-        <div>
-                Don't have an account? <a href="{{ url_for('register') }}">Sign up here</a>.
-       
+            <!--Link to sign up-->
+            <div>
+                Don't have an account? <a href="{{ url_for('register') }}">Sign up here</a>.   
+            </div>
         </div>
-</div>
     </div>
 </div>
-
 {% endblock %}

@@ -2,119 +2,127 @@
 {% block content %}
 <div class="row margin-zero">
     <div class="col s12 m8 offset-m2">
-    <div class="text-in-front center-align">
-        <form action="{{url_for('insert_recipe')}}" method="POST">
-        <!--title-->
-		<div class="row">
-			<div class="input-field col s12">
-				<label for="title">Title</label>
-                <input  id="title" name="title" type="text" class="validate" minlength="3" maxlength="25" pattern="^[a-zA-z0-9--.\s]{3,25}$" required>
-                </div>       
-            </div>
-         <!--image source-->
-        <div class="row">
-                <div class="input-field col s12">
-                    <label for="image_src">Image Source</label>
-                    <input id="image_src" name="image_src" type="url" class="validate" required>
+        <div class="text-in-front center-align">
+            <!--form to add a new recipe-->
+            <form action="{{url_for('insert_recipe')}}" method="POST">
+                <!--title-->
+		        <div class="row">
+			        <div class="input-field col s12">
+				        <input  id="title" name="title" type="text" class="validate" pattern="^[a-zA-z0-9--.\s]{3,50}$" minlength="3" maxlength="50" required>
+                        <label for="title" data-error="Please do not use special characters (except hyphen, underscore and period)">Title</label>
+                    </div>       
                 </div>
-            </div>
-            <!--prep time-->
-            <div class="row">
-                <div class="input-field col s2 m1">
-                    <label for="prep_time">prep time</label>
+                <!--image source-->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="image_src" name="image_src" type="url" class="validate" required>
+                        <label for="image_src" data-error="Please enter a url. Ex. http://this_is_an_example.com">Image Source</label>
+                    </div>
                 </div>
-                <div class="input-field col s4 m5">
-                    <input id="prep_time" name="prep_time"  type="time" class="validate" required>
+                <div class="row">
+                    <!--prep time-->
+                    <div class="input-field col s2 m1">
+                        <label for="prep_time" >Prep time</label>
+                    </div>
+                    <div class="input-field col s4 m5">
+                        <input id="prep_time" name="prep_time" min="00:05" max="24:00" type="time" class="validate" required>
+                    </div>
+                    <!--cook time-->
+                    <div class="input-field col s2 m1">
+                        <label for="cook_time">Cook time</label>
+                    </div>
+                    <div class="input-field col s4 m5">
+                        <input id="cook_time" name="cook_time" min="00:05" max="24:00" type="time" class="validate" required>
+                    </div>    
                 </div>
-                <div class="input-field col s2 m1">
-                    <label for="cook_time">cook time</label>
+                <div class="row">
+                    <!--serves-->
+                    <div class="input-field col s6">
+                        <label for="serving">Serves</label>
+                        <input id="serving" name="serving" type="number" min="1" max="10" title="between 1 and 10" class="validate"  required>
+                    </div> 
+                    <!--calories-->
+                    <div class="input-field col s6">
+                        <label for="calories">Calories   KCal</label>
+                        <input id="calories" name="calories" type="text" class="validate" maxlength="7" pattern="^[0-9]+(\.)?[0-9]+{1,7}$" title="The Field should only contain decimal or whole numbers e.g. 101.3 or 100" required >
+                    </div>      
                 </div>
-                <div class="input-field col s4 m5">
-                    <input id="cook_time" name="cook_time" type="time" class="validate" required>
-                </div>    
-            </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <label for="serving">serves</label>
-                    <input id="serving" name="serving" type="number" class="validate"  maxlength="3" required>
-                    
-                </div> 
-                <div class="input-field col s6">
-                    <label for="calories">calories   KCal</label>
-                    <input id="calories" name="calories" type="text" class="validate" minlength="1" maxlength="7" pattern="^[0-9]+(\.)?[0-9]+{1,7}$" title="The Field should only contain decimal or whole numbers e.g. 101.3 or 100" required >
-                    
-                </div>      
-            </div>
-            <!--group of radio button to display the types-->
-            <div class="row">
-                <div class="col s12 m4">
-                    <input class="with-gap" name="type" type="radio" id="veg" required value="veg"/>
-                    <label for="veg">Vegetarian</label>
+                <!--group of radio button to display the types-->
+                <div class="row">
+                    <div class="col s12 m4">
+                        <input class="with-gap" name="type" type="radio" id="veg" required value="veg"/>
+                        <label for="veg">Vegetarian</label>
+                    </div>
+                    <div class="col s12 m4">
+                        <input name="type" class="with-gap" type="radio" id="non_veg" value="non-veg"/>
+                        <label for="non_veg">Non-Vegetarian</label>
+                    </div>
+                    <div class=" col s12 m4">
+                        <input name="type" class="with-gap" type="radio" id="vegan" value="vegan"/>
+                        <label for="vegan">Vegan</label>
+                    </div>        
                 </div>
-                <div class="col s12 m4">
-                    <input name="type" class="with-gap" type="radio" id="non_veg" value="non-veg"/>
-                    <label for="non_veg">Non-Vegetarian</label>
+                <!--dropdown to display the cuisines-->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select id="cuisine" name="cuisine" class="validate" required>
+                            <option value="" disabled selected>Choose the cuisine</option>
+                            <!--populates the dropdown with values in the database-->
+                            {% for cuisine in cuisines %}
+                                <option name="cuisine" value="{{cuisine.cuisine_name}}">{{cuisine.cuisine_name}}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="cuisine">Cuisine</label>
+                    </div>
                 </div>
-                <div class=" col s12 m4">
-                    <input name="type" class="with-gap" type="radio" id="vegan" value="vegan"/>
-                    <label for="vegan">Vegan</label>
-                </div>        
-            </div>
-            <!--dropdown to display the cuisines-->
-             <div class="row">
-                <div class="input-field col s12">
-                    <select id="cuisine" name="cuisine" class="validate" required>
-                        <option value="" disabled selected>Choose the cuisine</option>
-                        <!--populates the dropdown with values in the database-->
-                        {% for cuisine in cuisines %}
-                        <option name="cuisine" value="{{cuisine.cuisine_name}}">{{cuisine.cuisine_name}}</option>
-                        {% endfor %}
-                    </select>
-                    <label for="cuisine">Cuisine</label>
+                <!--ingredients-->  
+                <div class="row"  id="ingredients-div">
+                    <div class="input-field col s9 m11">
+                        <label for="ingredients">Ingredients</label>
+                        <input id="ingredients" name="ingredients[]" type="text" class="validate" required>
+                    </div>
+                    <!--button to create a new input field-->
+                    <div class="col s3 m1">
+                        <a onclick="add_input_field_ingredients()"><i class="medium material-icons orange-color change-color waves-effect z-depth-4 depth-circle">add_circle</i></a>
+                    </div>
                 </div>
-            </div>  
-            <div class="row"  id="ingredients-div">
-                <div class="input-field col s9 m11">
-                    <label for="ingredients">Ingredients</label>
-                    <input id="ingredients" name="ingredients[]" type="text" class="validate" required>
+                <div class="row" id="instructions-div">
+                    <div class="input-field col s9 m11">
+                        <label for="instructions">Instructions</label>
+                        <input id="instructions" name="instructions[]" type="text" class="validate" required>                   
+                    </div>
+                    <!--button to create a new input field-->
+                    <div class="col s3 m1">
+                        <a href="#!"  onclick="add_input_field_instructions()"><i class="medium material-icons orange-color change-color waves-effect z-depth-4 depth-circle">add_circle</i></a>
+                    </div>
                 </div>
-                <div class="col s3 m1">
-                    <a onclick="add_input_field_ingredients()"><i class="medium material-icons orange-color change-color waves-effect z-depth-4 depth-circle">add_circle</i></a>
+                <!--kitchen tools(name and link)-->
+                <div id="tools-div">
+                    <div class="row" >
+                        <div class="input-field col s3">
+                            <label for="name">Tool's Name</label>
+                            <input id="name" name="name[]" type="text" class="validate" required>              
+                        </div>
+                        <div class="input-field col s6 m8">
+                            <label for="link">Tool's Link</label>
+                            <input id="link" name="link[]" type="url" class="validate" required>                
+                        </div>
+                        <!--button to create a new input field-->
+                        <div class="col s3 m1">
+                            <a href="#!" onclick="add_input_field_tools()"><i class="medium material-icons orange-color change-color waves-effect z-depth-4 depth-circle">add_circle</i></a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="row" id="instructions-div">
-                <div class="input-field col s9 m11">
-                    <label for="instructions">Instructions</label>
-                    <input id="instructions" name="instructions[]" type="text" class="validate" required>                   
+                <div class="row margin-zero ">
+                    <!--button to submit the form-->
+                    <div class="col s12 center-align">
+                        <button class="btn waves-effect waves-light button-styling z-depth-4" type="submit" name="action">Submit
+                            <i class="material-icons right ">send</i>
+                        </button>
+                    </div>
                 </div>
-            <div class="col s3 m1">
-                <a href="#!"  onclick="add_input_field_instructions()"><i class="medium material-icons orange-color change-color waves-effect z-depth-4 depth-circle">add_circle</i></a>
-            </div>
+            </form> 
         </div>
-        <div id="tools-div">
-        <div class="row" >
-            <div class="input-field col s3">
-                <label for="tools-name">tools-name</label>
-                <input id="tools-name" name="tools-name[]" type="text" class="validate" required>              
-            </div>
-            <div class="input-field col s6 m8">
-                <label for="tools-link">tools-link</label>
-                <input id="tools-link" name="tools-link[]" type="url" class="validate" required>                
-            </div>
-            <div class="col s3 m1">
-                <a href="#!" onclick="add_input_field_tools()"><i class="medium material-icons orange-color change-color waves-effect z-depth-4 depth-circle">add_circle</i></a>
-            </div>
-          </div>
-          </div>
-        <div class="row margin-zero ">
-            <div class="col s12 center-align">
-                <button class="btn waves-effect waves-light button-styling z-depth-4" type="submit" name="action">Submit
-                    <i class="material-icons right ">send</i>
-                </button>
-            </div>
-      </div>
-    </form>
-    </div>
     </div>
 </div>
 {% endblock %} 

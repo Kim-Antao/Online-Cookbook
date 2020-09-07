@@ -25,21 +25,21 @@
                         <label for="prep_time">Prep time</label>
                     </div>
                     <div class="input-field col s4 m5">
-                        <input id="prep_time" name="prep_time"  type="time" value="{{recipe.prep_time}}" class="validate" required>
+                        <input id="prep_time" name="prep_time" min="00:05" max="24:00" type="time" value="{{recipe.prep_time}}" class="validate" required>
                     </div>
                     <!--cook time-->
                     <div class="input-field col s2 m1">
                         <label for="cook_time">Cook time</label>
                     </div>
                     <div class="input-field col s4 m5">
-                        <input id="cook_time" name="cook_time" type="time" value="{{recipe.cook_time}}" class="validate" required>
+                        <input id="cook_time" name="cook_time" min="00:05" max="24:00" type="time" value="{{recipe.cook_time}}" class="validate" required>
                     </div>    
                 </div>
                 <div class="row">
                     <!--serves-->
                     <div class="input-field col s6">
                         <label for="serving">Serves</label>
-                        <input id="serving" name="serving" type="number" class="validate" value="{{recipe.serving}}" maxlength="3" required>
+                        <input id="serving" name="serving" type="number" min="1" max="10" title="between 1 and 10" class="validate" value="{{recipe.serving}}" required>
                     </div> 
                     <!--calories-->
                     <div class="input-field col s6">
@@ -62,7 +62,6 @@
                             <label for="vegan">Vegan</label>
                         </div>
                 </div>
-
                 <!--dropdown to display the cuisines-->
                 <div class="row">
                     <div class="input-field col s12">
@@ -92,6 +91,7 @@
                         <a onclick="add_input_field_ingredients()"><i class="medium material-icons orange-color change-color waves-effect z-depth-4 depth-circle">add_circle</i></a>
                     </div>
                 </div>
+                <!--instructions-->  
                 <div class="row" id="instructions-div">
                     <div class="input-field col s9 m11">
                         <label for="instructions">Instructions</label>
@@ -108,15 +108,16 @@
                 <div id="tools-div">
                     {% for tool in tools %}
                     <div class="row" >
+                        {% for name in tool.name %}
                         <div class="input-field col s3">
                             <label for="name">Tool's Name</label>    
-                            <input id="name" name="name[]" type="text" class="validate" value="{{tool.name}}" required>                
+                            <input id="name" name="name[]" type="text" class="validate" value="{{name}}" required>                
                         </div>
                         <div class="input-field col s6 m8">
                             <label for="link">Tool's Link</label>
-                               <input id="link" name="link[]" type="url" class="validate" value="{{tool.link}}" required>                
-                            
+                               <input id="link" name="link[]" type="url" class="validate" value="{{tool.link[loop.index-1]}}" required>                     
                         </div>
+                        {% endfor %}
                         <!--button to create a new input field-->
                         <div class="col s3 m1">
                             <a href="#!" onclick="add_input_field_tools()"><i class="medium material-icons orange-color change-color waves-effect z-depth-4 depth-circle">add_circle</i></a>

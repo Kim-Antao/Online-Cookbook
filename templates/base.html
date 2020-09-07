@@ -11,6 +11,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <!--Import Google fonts-->
     <link href="https://fonts.googleapis.com/css" rel="stylesheet">
+    <!--Link for chartist-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
     <!--Link to the custom css-->
 	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
 </head>
@@ -18,12 +20,11 @@
 <body>
     <header>
         <!--materialize navigation-->
-        <div class="navbar-fixed">
             <nav>
                 <div class="nav-wrapper">
                     <a href="{{url_for('index_page')}}" class="brand-logo">CookBook</a>
                     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <ul class="right hide-on-med-and-down">
                         <li><a href="{{url_for('index_page')}}">Home</a></li>
                         <!--check if the user is logged in-->
                         {% if session.user %}
@@ -31,9 +32,10 @@
                         {% else %}
                             <li><a href="{{url_for('display_message')}}">New Recipe</a></li>
                         {% endif %}
-                        <li><a href="{{url_for('list_cuisines')}}">Search</a></li>
+                        <li><a href="{{url_for('search')}}">Search</a></li>
                         <li><a href="{{url_for('buy')}}">Buy</a></li>
                         <li><a href="{{url_for('dashboard')}}">Dashboard</a></li>
+                        <!--check if the user is logged in-->
                         {% if session.user %}
                             <li><a href="{{url_for('logout')}}">Logout</a></li>
                         {% else %}
@@ -49,7 +51,7 @@
                         {% else %}
                             <li><a href="{{url_for('display_message')}}">New Recipe</a></li>
                         {% endif %}
-                        <li><a href="{{url_for('list_cuisines')}}">Search</a></li>
+                        <li><a href="{{url_for('search')}}">Search</a></li>
                         <li><a href="{{url_for('buy')}}">Buy</a></li>
                         <li><a href="{{url_for('dashboard')}}">Dashboard</a></li>
                         <!--check if the user is logged in-->
@@ -60,19 +62,20 @@
                         {% endif %}
                     </ul>
                 </div>
-            </nav>
-        </div>        
+            </nav>        
     </header>
     <!-- materialize container-->
     <div class="container-dimensions">
         <section>
             <!--flash messages-->
-            {% with messages = get_flashed_messages() %}
+            {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
-                    {% for message in messages %}
+                    {% for category, message in messages %}
                         <div class="row flashes">
-                            <div class="col s12 m8 offset-m2 text-in-front">
-                                <h4 class="center-align heading">{{message}}</h4>
+                            <div class="col s12 m8 offset-m2 text-in-front ">
+                            
+                                <h4 class="center-align heading capitalize {{ category }}">{{message}}</h4>
+                               
                             </div>
                         </div>
                     {% endfor %}
@@ -84,6 +87,7 @@
 
         {%endblock%}
     </div>
+
     <!--footer with copyright info-->
     <footer class="page-footer">
         <div class="footer-copyright">
@@ -95,72 +99,14 @@
 	<!--Import jQuery before materialize.js-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script type="text/javascript">    
-        $(document).ready(function() {
-            //additional script required for functioning of materialize elements
-            $('.collapsible').collapsible();
-            $(".button-collapse").sideNav();
-            $('select').material_select();
-            //code below was provided in the code institue module
-            //adding validation classes to materialise select
-            validateMaterializeSelect();
-            function validateMaterializeSelect(){
-                let classValid = {"border-bottom": "1px solid #4caf50", "box-shadow": "0 1px 0 0 #4caf50"};
-                let classInvalid = {"border-bottom": "1px solid #f44336", "box-shadow": "0 1px 0 0 #f44336"};
-                //hide the select element physically but still keep it a part of the DOM
-                if($("select.validate").prop("required")){
-                    $("select.validate").css({"display": "block", "height": "0", "padding": "0", "width": "0", "position": "absolute"});
-                }
-                $(".select-wrapper input.select-dropdown").on("focusin", function(){
-                    $(this).parent(".select-wrapper").on("change", function(){
-                        if($(this).children("ul").children("li.selected:not(.disabled)").on("click", function(){})){
-                            $(this).children("input").css(classValid); 
-                        }
-                    });
-                }).on("click", function(){
-                if($(this).parent(".select-wrapper").children("ul").children("li.selected:not(.disabled)").css("background-color")==="rgba(0,0,0,0.03)"){
-                    $(this).parent(".select-wrapper").children("input").css(classValid);
-                }else{
-                    $(".select-wrapper input.select-dropdown").on("focusout", function(){
-                        if($(this).parent(".select-wrapper").children("select").prop("required")){
-                            if($(this).css("border-bottom")!="1px solid rgb(76, 175, 80)"){
-                                $(this).parent(".select-wrapper").children("input").css(classInvalid);
-                            }
-                        }
-                    });
-                }
-                });
-            }
-            //function to get the value of the dropdown on change 
-            $('#dropdown-container select').on('change', function(){
-                $(this).parent(".select-wrapper").on("change", function(){
-                        if($(this).children("ul").children("li.selected:not(.disabled)").on("click", function(){})){
-                            console.log($(this).children("ul").children("li.selected").children("span").text()); 
-                        }
-                    });
-            })
-        });
-
-
-        //function to add an input field for ingredients field
-        function add_input_field_ingredients(){
-            var new_input= document.createElement("div");
-            new_input.innerHTML = '</br><div class="input-field col s9 m11"><input name="ingredients[]" type="text" class="validate" required></div>';
-            document.getElementById("ingredients-div").appendChild(new_input);
-        }
-        //function to add an input field for instructions field
-        function add_input_field_instructions(){
-            var new_input1= document.createElement("div");
-            new_input1.innerHTML = '</br><div class="input-field col s9 m11"><input name="instructions[]" type="text" class="validate" required></div>';
-            document.getElementById("instructions-div").appendChild(new_input1);    
-        }
-        //function to add an input field for tools field
-        function add_input_field_tools(){
-            var new_input2= document.createElement("div");
-            new_input2.class="row";
-            new_input2.innerHTML = '<div class="input-field col s3"><input name="tools-name[]" type="text" class="validate" required></div><div class="input-field col s8"><input name="tools-link[]" type="text" class="validate" required></div>';
-            document.getElementById("tools-div").appendChild(new_input2);
-        }
-    </script>
+    <!--Import script for chartist.js-->
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <!--custom script-->
+    <script type="text/javascript" src="{{url_for('static', filename='js/customjs.js')}}"></script>
+    <!--scripts needed to embed mongodb charts-->
+    <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.6.0/stitch.js"></script>
+    <script src="https://unpkg.com/@mongodb-js/charts-embed-dom"></script>
+    <!--script to display charts-->
+    <script src="{{url_for('static', filename='js/mongodbCharts.js')}}"></script>
 </body>
 </html>
