@@ -10,14 +10,7 @@ body{
     background-image: url("https://d1wcgy4dy6voh7.cloudfront.net/wp-content/uploads/2016/03/redcurry.jpg");
     background-size: cover;
 }
-/*
-.center-align{
-    margin: 0 auto;
-}*/
 
-.margin-zero{
-    margin-bottom: 0;
-}
 /***********************************************Navigation*/
 
 nav{
@@ -32,6 +25,7 @@ nav .brand-logo{
 #mobile-demo a{
      color:#ef6c00;
 }
+
 /***********************************************Footer*/
 
 .page-footer{
@@ -42,45 +36,90 @@ nav .brand-logo{
     text-align: center;
     
 }
-/*new-recipe-page*/
-/*.image-addPage{
-    filter: blur(5px);
-    -webkit-filter: blur(5px);
-}*/
+
+/***********************************************headings*/
+
+.heading{
+    font-family:"Source Serif Pro", sans-serif;
+    color: #ef6c00;
+    text-align: center;  
+}
+
+.heading-spacing{
+    padding-top: 10rem;
+}
+
+h5{
+    text-align: left;
+}
+
+/***********************************************buttons*/
+
+.login-button-styling{
+    width: 90%;
+    background-color: #ef6c00;
+    color: #ffffff;
+    text-transform: capitalize;
+}
+
+.button-styling{
+    background-color: #ef6c00;
+    color: #ffffff;
+    font-family:"Source Serif Pro", sans-serif;
+    text-transform: capitalize;
+    font-size: 25px;
+    margin-bottom: 20px;
+    
+}
+
+.btn:hover, .btn-large:hover{
+     background-color: #e65100;
+}
+
+.btn, .btn-large{
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.8);
+}
+
+.change-color:hover{
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.8);
+}
+
+/***********************************************Common classes*/
+
 .text-in-front{
-    background-color: rgba(209, 198, 198, 0); /* Fallback color */
     background-color: rgba(209, 198, 198, 0.8); /* Black w/opacity/see-through */
-    background-color: none;
     opacity:1;
     z-index: 2;
     width: 100%;
-   
 }
-/*
+
 @media(max-width:600px){
-    .text-in-front{
+    .background-small-screen{
+        background-color: rgba(209, 198, 198, 0.8); /* Black w/opacity/see-through */
+        opacity:1;
+        z-index: 2;
         width: 100%;
     }
 }
-*/
 
-/*
+.margin-zero{
+    margin-bottom: 0;
+}
 
-input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea{
-    border-bottom:2px solid #ef6c00;
+.orange-color{
+    color:#ef6c00;
 }
-input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]){
-      border-bottom:2px solid #b7410e;
+
+.capitalize{
+    text-transform: capitalize;
 }
-input.valid:not([type]), input.valid:not([type]):focus, input[type=text].valid:not(.browser-default), input[type=text].valid:not(.browser-default):focus, input[type=password].valid:not(.browser-default), input[type=password].valid:not(.browser-default):focus, input[type=email].valid:not(.browser-default), input[type=email].valid:not(.browser-default):focus, input[type=url].valid:not(.browser-default), input[type=url].valid:not(.browser-default):focus, input[type=time].valid:not(.browser-default), input[type=time].valid:not(.browser-default):focus, input[type=date].valid:not(.browser-default), input[type=date].valid:not(.browser-default):focus, input[type=datetime].valid:not(.browser-default), input[type=datetime].valid:not(.browser-default):focus, input[type=datetime-local].valid:not(.browser-default), input[type=datetime-local].valid:not(.browser-default):focus, input[type=tel].valid:not(.browser-default), input[type=tel].valid:not(.browser-default):focus, input[type=number].valid:not(.browser-default), input[type=number].valid:not(.browser-default):focus, input[type=search].valid:not(.browser-default), input[type=search].valid:not(.browser-default):focus, textarea.materialize-textarea.valid, textarea.materialize-textarea.valid:focus, .select-wrapper.valid>input.select-dropdown{
-    border-bottom:2px solid #b7410e;
-    box-shadow: 0 1px 0 0 #b7410e;
-    -webkit-box-shadow: 0 1px 0 0 #b7410e;
+
+.material-icons-color{
+    
+    color:#ef6c00;
 }
-input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-default):focus:not([readonly])+label, input[type=password]:not(.browser-default):focus:not([readonly])+label, input[type=email]:not(.browser-default):focus:not([readonly])+label, input[type=url]:not(.browser-default):focus:not([readonly])+label, input[type=time]:not(.browser-default):focus:not([readonly])+label, input[type=date]:not(.browser-default):focus:not([readonly])+label, input[type=datetime]:not(.browser-default):focus:not([readonly])+label, input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label, input[type=tel]:not(.browser-default):focus:not([readonly])+label, input[type=number]:not(.browser-default):focus:not([readonly])+label, input[type=search]:not(.browser-default):focus:not([readonly])+label, textarea.materialize-textarea:focus:not([readonly])+label{
-    color:#b7410e;
-}
-*/
+
+/************************************************Labels and input elements*/
 
 ::placeholder{
     color:#ef6c00;
@@ -95,18 +134,14 @@ label, .input-field label{
     box-shadow: 0 1px 0 0 #F44336;
 }
 
-input[type=time].valid:not(.browser-default){
+input[type=time].valid:not(.browser-default)+label:after{
     border-bottom: 1px solid green;
     box-shadow: 0 1px 0 0 green;
 }
 
 
-
-
-/* customise the materialize radio buttons*/
-
- 
- /* stack overflow*/ 
+/************************************************ customise the materialize radio buttons*/
+/* stack overflow*/ 
  .with-gap[type="radio"]:checked+label:after{
    background-color: #ef6c00;
    border-color: #ef6c00;
@@ -116,63 +151,31 @@ input[type=time].valid:not(.browser-default){
   border-color: #ef6c00;
 }
 
+/*********************************************** modal*/
 
-/*   index page*/
-
-.heading{
-    font-family:"Source Serif Pro", sans-serif;
-    color: #ef6c00;
-    
-    text-align: center;  
+.confirmation-message{
+    font-size: 20px;
 }
 
-.heading-spacing{
-    padding-top: 10rem;
+/*********************************************** Flash message*/
+
+.flashes h4{
+    line-height: 2;
 }
 
-.button-styling{
-    background-color: #ef6c00;
-    color: #ffffff;
-    font-family:"Source Serif Pro", sans-serif;
-    text-transform: capitalize;
-    font-size: 25px;
-    margin-bottom: 20px;
-    
-}
-.btn:hover, .btn-large:hover, .change-color:hover{
-     background-color: #e65100;
-}
-@media(max-width:600px){
-    .background-small-screen{
-        background-color: rgba(209, 198, 198, 0); /* Fallback color */
-        background-color: rgba(209, 198, 198, 0.8); /* Black w/opacity/see-through */
-        background-color: none;
-        opacity:1;
-        z-index: 2;
-        width: 100%;
-    }
+.error{
+    color: #d50000;
 }
 
-
-/* modal*/
-
-
-.login-button-styling{
-    width: 90%;
-    background-color: #ef6c00;
-    color: #ffffff;
-    text-transform: capitalize;
-}
-/*new recipe*/
-
-label{
-    color:#ef6c00;
+.info{
+    color: #00838f;
 }
 
-.orange-color{
-    color:#ef6c00;
+.message{
+    color:green;
 }
 
+/*********************************************** new recipe*/
 
 .depth-circle{
     border-radius: 60%;
@@ -183,27 +186,115 @@ label{
     text-transform: capitalize;
 }
 
-/*login*/
+/*********************************************** search page*/
 
-.material-icons-color{
-    
-    color:#ef6c00;
+.search-label-customization{
+    line-height: 5rem;
+    font-size: 2rem;
+    font-weight: 500;
 }
 
-/*flash message customization*/
-.flashes h4{
-    line-height: 2;
+#dropdown-container .select-wrapper input.select-dropdown{
+    font-size: 2rem;
 }
 
-
-/*common classes*/
-.capitalize{
-    text-transform: capitalize;
+.row .padding-zero{
+    padding-left: 0;
+    padding-right: 0;
 }
 
-/*view page*/
+/*********************************************** view page*/
 .image-format{
-    /*width:90%;*/
-    max-height: 30rem;
+    width:90%;
     background-size: cover;
+}
+
+.view-lists{
+    line-height: 3rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: left;
+}
+
+.icon-spacing{
+    line-height: 3rem;
+}
+
+.red-color{
+    background-color: #d50000;
+}
+.red-color:hover{
+    background-color: rgba(213,0,0,0.8);
+}
+
+.blue-color{
+    background-color: #01579b;
+}
+
+.blue-color:hover{
+    background-color: rgba(1,87,155,0.8);
+}
+
+.margin-customization{
+    margin-bottom: 20px;
+}
+
+.view-labels{
+    line-height: 3rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+@media(max-width:992px){
+    .search-label-customization, .view-labels{
+        line-height: 2rem;
+        font-size: 1rem;
+    }
+    .view-lists{
+        line-height: 2rem;
+        font-size: 1rem;
+    }
+    .icon-spacing{
+        line-height: 2rem;
+    }
+    .margin-customization{
+        margin-bottom: 5px;
+    }
+    .small-button-styling{
+        font-size: 15px;
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+}
+
+.view-lists a{
+    color:black;
+}
+
+.view-lists a:hover{
+    color: rgba(0 ,0,0,0.5);
+}
+
+/************************************************ buy page*/
+
+.collection.with-header .collection-header,.collection .collection-item{
+     /* Fallback color */
+    background-color: rgba(209, 198, 198, 0.8);
+    opacity: 1;
+    z-index: 2;
+}
+
+.tool-name-customization{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+/*********************************************** dashboard*/
+
+.white-color{
+    background-color: white;
+}
+
+.statistics{
+    border-bottom: 2px solid #e65100;
 }
